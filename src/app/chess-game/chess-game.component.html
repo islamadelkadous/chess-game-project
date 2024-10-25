@@ -1,0 +1,54 @@
+<div class="main-menu-component">
+  <div class="title">
+    <h1>{{title}}</h1>
+  </div>
+  <div class="offline-game">
+    <div class="page-content">
+      <div class="boards-container">
+        <div class="single-board-container">
+          <iframe #white_board_iframe [src]="iFrameWhiteBoardUrl" height="560" width="550" class="white-board"></iframe>
+        </div>
+        <div class="single-board-container">
+          <iframe #black_board_iframe [src]="iFrameBlackBoardUrl" height="560" width="550" class="black-board"></iframe>
+        </div>
+      </div>
+      <div class="button-container">
+        <button class="button-19" (click)="reset()">
+          Reset
+        </button>
+      </div>
+    </div>
+    <div *ngIf="gameFinished" class="game-end-popup-overlay">
+      <div class="game-end-popup">
+        <div class="game-end-popup-content">
+          <div class="game-end-popup-title subtitle">
+            <h3>{{finishedGameMessage}}</h3>
+          </div>
+          <div class="game-end-popup-button">
+            <button class="button-19" (click)="reset()">
+              Create New Game
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="online-game">
+    <div class="subtitle">
+      <h3>Play Online</h3>
+    </div>
+    <div class="form-container">
+      <div class="host-form">
+        <button class="button-19" (click)="hostGame()" >
+          Host New Game
+        </button>
+      </div>
+      <div class="join-form">
+        <input type="text" class="chess-input" [(ngModel)]="gameToJoin"/>
+        <button class="button-19" (click)="joinGame()">
+          Join Game
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,64 @@
+<div class="main-menu-component">
+  <div class="quit-game-button">
+    <button class="button-19" (click)="quitGame()">
+      Quit Game
+    </button>
+  </div>
+  <div class="title">
+    <h1>{{title}}</h1>
+  </div>
+  <div class="subtitle">
+    <h3>{{subTitle}}</h3>
+  </div>
+  <div class="subtitle">
+    <h3>Game Id: {{gameId}}</h3>
+  </div>
+  <div class="page-content">
+    <div class="boards-container">
+      <div class="single-board-container">
+        <ngx-chess-board
+          #board
+          [size]="535"
+          [darkDisabled]="isUserWhite"
+          [lightDisabled]="!isUserWhite"
+          (moveChange)="onMove()"
+          [lightTileColor]="lightTileColor"
+          [darkTileColor]="darkTileColor">
+        </ngx-chess-board>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="gameFinished" class="game-end-popup-overlay">
+    <div class="game-end-popup">
+      <div class="game-end-popup-content">
+        <div class="game-end-popup-title subtitle">
+          <h3>{{finishedGameMessage}}</h3>
+        </div>
+        <div class="game-end-popup-button">
+          <button class="button-19" (click)="playAgain()">
+            Play Again
+          </button>
+        </div>
+        <div class="game-end-popup-button">
+          <button class="button-19" (click)="quitGame()">
+            Exit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showAlert" class="game-end-popup-overlay">
+    <div class="game-end-popup">
+      <div class="game-end-popup-content">
+        <div class="game-end-popup-title subtitle">
+          <h3>Game No Longer Available</h3>
+        </div>
+        <div class="game-end-popup-button">
+          <button class="button-19" (click)="confirmRedirect()">
+            Return To Home
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
