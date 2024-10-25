@@ -66,7 +66,7 @@ export class OnlineGameComponent implements OnInit {
   }
 
   private handleCheckMate(): void {
-    this.finishedGameMessage = (this.isUserWhite === this.isWhiteTurn)
+    this.finishedGameMessage = (this.isUserWhite && this.isWhiteTurn) || (!this.isUserWhite && !this.isWhiteTurn)
       ? 'Check Mate! You Lost.'
       : 'Check Mate! You Won.';
     this.gameFinished = true;
